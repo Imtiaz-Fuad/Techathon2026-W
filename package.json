@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "db:init": "node scripts/init-db.js",
-    "simulate": "node simulator.js"
+    "simulate": "node simulator.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
