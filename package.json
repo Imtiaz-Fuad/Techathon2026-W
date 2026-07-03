@@ -1,0 +1,21 @@
+{
+  "name": "office-watch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "db:init": "node scripts/init-db.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "autoprefixer": "^10.5.2",
+    "better-sqlite3": "^12.11.1",
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2",
+    "next": "^16.2.10",
+    "postcss": "^8.5.16",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "swr": "^2.4.2",
+    "tailwindcss": "^4.3.2"
+  }
+}
