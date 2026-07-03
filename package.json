@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "db:init": "node scripts/init-db.js"
+    "db:init": "node scripts/init-db.js",
+    "simulate": "node simulator.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
