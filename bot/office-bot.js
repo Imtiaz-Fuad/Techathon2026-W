@@ -94,6 +94,38 @@ function summarizeUsagePayload(usagePayload) {
   };
 }
 
+function getAlertKey(alert) {
+  if (alert.kind === "room") {
+    return `room:${alert.room?.code || alert.room?.name || "unknown"}:${alert.since || alert.timestamp}`;
+  }
+
+  if (alert.kind === "after_hours") {
+    return `after_hours:${alert.device?.id || "unknown"}:${alert.device?.last_changed || alert.timestamp}`;
+  }
+
+  return `device:${alert.device?.id || "unknown"}:${alert.device?.last_changed || alert.timestamp}`;
+}
+
+function formatAlertLine(alert) {
+  if (alert.kind === "room") {
+    return `Room alert: ${alert.room.name} has been fully ON for more than 2 hours.`;
+  }
+
+  if (alert.kind === "after_hours") {
+    return `After-hours alert: ${alert.device.name} is ON outside office hours.`;
+  }
+
+  return `Device alert: ${alert.device.name} has been ON for more than 2 hours.`;
+}
+
+function formatAlertSummary(alerts) {
+  const lines = alerts.map((alert) => `- ${formatAlertLine(alert)}`);
+  return [
+    `Office Watch alert update: ${alerts.length} new alert${alerts.length === 1 ? "" : "s"} detected.`,
+    ...lines,
+  ].join("\n");
+}
+
 function fallbackStatusReply(summary) {
   const roomBits = summary.rooms.map(
     (room) => `${room.room}: ${room.on_count}/${room.total_count} on, ${room.wattage}W`
@@ -186,6 +218,9 @@ module.exports = {
   buildStatusReply,
   buildUsageReply,
   fetchJson,
+  formatAlertLine,
+  formatAlertSummary,
+  getAlertKey,
   getApiBaseUrl,
   humanizeReply,
   summarizeRoomPayload,
