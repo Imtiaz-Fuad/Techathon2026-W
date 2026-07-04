@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "author": "En Ayr",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 100.7, "left": 235, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "light1",
+      "top": -243.6,
+      "left": -121,
+      "attrs": { "color": "white", "label": "Light-1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "light2",
+      "top": -243.6,
+      "left": 32.6,
+      "attrs": { "color": "white", "label": "Light-2" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "light3",
+      "top": -243.6,
+      "left": -34.6,
+      "attrs": { "color": "white", "label": "Light-3" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fan1",
+      "top": -90,
+      "left": -82.6,
+      "attrs": { "color": "blue", "label": "Fan-1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fan2",
+      "top": -90,
+      "left": 3.8,
+      "attrs": { "color": "blue", "label": "Fan-2" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -120,
+      "left": -211.75,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -129.6,
+      "left": 47.45,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 32.2,
+      "left": -164.05,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r6",
+      "top": -148.8,
+      "left": -38.95,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 33.6,
+      "left": 85.85,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": -68.5,
+      "left": 182.2,
+      "attrs": { "value": "50", "label": "Voltage-Sensor" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw1",
+      "top": 282.8,
+      "left": -131.3,
+      "attrs": { "label": "Sw-Light1" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw2",
+      "top": 282.8,
+      "left": 60.7,
+      "attrs": { "label": "Sw-Light2" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw3",
+      "top": 282.8,
+      "left": -35.3,
+      "attrs": { "label": "Sw-Light3" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw4",
+      "top": 359.6,
+      "left": -92.9,
+      "attrs": { "label": "Sw-Fan1" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw5",
+      "top": 359.6,
+      "left": 22.3,
+      "attrs": { "label": "Sw-Fan2" }
+    }
+  ],
+  "connections": [
+    [ "esp:D25", "r1:1", "green", [] ],
+    [ "r1:2", "light1:A", "green", [] ],
+    [ "light1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:D26", "r2:1", "green", [] ],
+    [ "r2:2", "light2:A", "green", [] ],
+    [ "light2:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:D27", "r3:1", "blue", [] ],
+    [ "r3:2", "fan1:A", "blue", [] ],
+    [ "fan1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:D14", "r4:1", "blue", [] ],
+    [ "r4:2", "fan2:A", "blue", [] ],
+    [ "fan2:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:3V3", "pot1:VCC", "red", [] ],
+    [ "esp:GND.2", "pot1:GND", "black", [] ],
+    [ "pot1:SIG", "esp:D34", "orange", [] ],
+    [ "r6:1", "light3:A", "green", [ "h0" ] ],
+    [ "esp:D33", "r6:2", "green", [ "h-278.4", "v-9.6" ] ],
+    [ "light3:C", "esp:GND.1", "black", [ "v76.8", "h-86", "v374.4", "h86.4" ] ],
+    [ "sw1:2", "esp:D23", "orange", [] ],
+    [ "sw1:1", "esp:GND.2", "black", [] ],
+    [ "sw2:2", "esp:D22", "orange", [] ],
+    [ "sw2:1", "esp:GND.2", "black", [] ],
+    [ "sw3:2", "esp:D21", "orange", [] ],
+    [ "sw3:1", "esp:GND.2", "black", [] ],
+    [ "sw4:2", "esp:D19", "orange", [] ],
+    [ "sw4:1", "esp:GND.2", "black", [] ],
+    [ "sw5:2", "esp:D18", "orange", [] ],
+    [ "sw5:1", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
